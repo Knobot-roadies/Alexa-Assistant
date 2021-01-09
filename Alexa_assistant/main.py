@@ -5,26 +5,29 @@ import datetime
 import webbrowser
 import os
 import smtplib
-#print("initailizing jarvis")
+
+# print("initailizing jarvis")
 
 MASTER = "Pradipta"
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice',voices[1].id)
+engine.setProperty('voice', voices[0].id)
+
 
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-#this function will speak /or will wish you as per current time
+
+# this function will speak /or will wish you as per current time
 def wishMe():
     hour = int(datetime.datetime.now().hour)
-    #print(hour)
+    # print(hour)
 
-    if hour>=0 and hour<12:
+    if hour >= 0 and hour < 12:
         speak("Good Morning!" + MASTER)
 
-    elif hour>=12 and hour<18:
+    elif hour >= 12 and hour < 18:
         speak("Good afternoon" + MASTER)
 
     else:
@@ -32,8 +35,9 @@ def wishMe():
 
     speak("I am Alexa..... How may i help you?")
 
+
 def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com',587)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.login('yourmail@gmail.com', 'password')
@@ -49,13 +53,14 @@ def takecommand():
 
     try:
         print("recognising..")
-        query = r.recognize_google(audio, language = 'en-in')
+        query = r.recognize_google(audio, language='en-in')
         print(f"user said: {query}\n")
 
     except Exception as e:
         print("Say that again please")
         query = None
     return query
+
 
 def main():
     speak("initailizing alexa......")
@@ -77,6 +82,32 @@ def main():
         chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
         webbrowser.get(chrome_path).open(url)
 
+    elif ' play the music dilbar' in query.lower():
+        # webbrowser.open("youtube.com")
+        url = "https://www.youtube.com/watch?v=JFcgOboQZ08"
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        webbrowser.get(chrome_path).open(url)
+
+
+    elif 'open amazon' in query.lower():
+        # webbrowser.open("amazon.in")
+        url = "amazon.in"
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        webbrowser.get(chrome_path).open(url)
+
+    elif 'open whatsapp' in query.lower():
+        # webbrowser.open("web.whatsapp.com")
+        url = "https://web.whatsapp.com/"
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        webbrowser.get(chrome_path).open(url)
+
+     elif 'open godaddy' in query.lower():
+        # webbrowser.open("godaddy.com")
+        url = "godaddy.com"
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        webbrowser.get(chrome_path).open(url)
+    
+
     elif 'open gmail' in query.lower():
         url = "gmail.com"
         chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
@@ -87,7 +118,7 @@ def main():
 
     elif 'play music' in query.lower():
         speak('playing music...')
-        songs_dir = "C:\\Users\\KIIT\\Music"
+        songs_dir = "C:\\Users\\KIIT\\Music"  # I have usen my directory you plese use your directory otherwise it will note open
         songs = os.listdir(songs_dir)
         print(songs)
         os.startfile(os.path.join(songs_dir, songs[0]))
