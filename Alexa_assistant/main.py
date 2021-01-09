@@ -81,31 +81,6 @@ def main():
         url = "youtube.com"
         chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
         webbrowser.get(chrome_path).open(url)
-
-    elif ' play the music dilbar' in query.lower():
-        # webbrowser.open("youtube.com")
-        url = "https://www.youtube.com/watch?v=JFcgOboQZ08"
-        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-        webbrowser.get(chrome_path).open(url)
-
-
-    elif 'open amazon' in query.lower():
-        # webbrowser.open("amazon.in")
-        url = "amazon.in"
-        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-        webbrowser.get(chrome_path).open(url)
-
-    elif 'open whatsapp' in query.lower():
-        # webbrowser.open("web.whatsapp.com")
-        url = "https://web.whatsapp.com/"
-        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-        webbrowser.get(chrome_path).open(url)
-
-     elif 'open godaddy' in query.lower():
-        # webbrowser.open("godaddy.com")
-        url = "godaddy.com"
-        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-        webbrowser.get(chrome_path).open(url)
     
 
     elif 'open gmail' in query.lower():
